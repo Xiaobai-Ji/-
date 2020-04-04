@@ -7,9 +7,9 @@ Created on Thu Apr 3 18:12:12 2020
 """
 #Cleaning up previous mess
 import os
-#os.system("killall -9 chromedriver")
+os.system("killall -9 chromedriver")
 #os.system("killall -9 python3")
-#os.system("killall -9 /usr/lib/chromium-browser/chromium-browser-v7")
+os.system("killall -9 /usr/lib/chromium-browser/chromium-browser-v7")
 
 
 import time
