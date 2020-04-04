@@ -5,6 +5,13 @@ Created on Thu Apr 3 18:12:12 2020
 @author: 1742242048hj@gmail.com
 
 """
+#Cleaning up previous mess
+import os
+#os.system("killall -9 chromedriver")
+#os.system("killall -9 python3")
+#os.system("killall -9 /usr/lib/chromium-browser/chromium-browser-v7")
+
+
 import time
 from selenium import webdriver
 import selenium
@@ -152,9 +159,13 @@ for i in range(length):
 
 
 	# exit
-	driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/button").click()
+	try:
+		driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/button").click()
+
+	except Exception:
+		log_write("手动关闭失败，正在杀进程。系统好烂！")
 
 
 os.system("killall -9 chromedriver")
-os.system("killall -9 python3")
 os.system("killall -9 /usr/lib/chromium-browser/chromium-browser-v7")
+os.system("killall -9 python3")
