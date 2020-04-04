@@ -72,7 +72,7 @@ for i in range(length):
 			current_result = driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div[3]/div/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]").text
 
 		except selenium.common.exceptions.NoSuchElementException:
-			phrase_to_be_recorded = str(username) + 'failed 1 time, trying 2 times at ' + str(now)
+			phrase_to_be_recorded = str(username) + 'failed 1 time, trying 2 times at ' + str(datetime.now())
 			print(phrase_to_be_recorded)
 			log_write(phrase_to_be_recorded)
 
@@ -87,7 +87,7 @@ for i in range(length):
 			current_result = driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div[3]/div/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]").text
 
 		except selenium.common.exceptions.NoSuchElementException:
-			phrase_to_be_recorded = str(username) + 'failed 2 time, trying 3 times at ' + str(now)
+			phrase_to_be_recorded = str(username) + 'failed 2 time, trying 3 times at ' + str(datetime.now())
 			print(phrase_to_be_recorded)
 			log_write(phrase_to_be_recorded)
 
@@ -101,7 +101,7 @@ for i in range(length):
 			current_result = driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div[3]/div/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]").text
 
 		except selenium.common.exceptions.NoSuchElementException:
-			phrase_to_be_recorded = str(username) + 'failed 3 times at ' + str(now) + '学校系统真的不稳定，我重新试试喔'
+			phrase_to_be_recorded = str(username) + 'failed 3 times at ' + str(datetime.now()) + '学校系统真的不稳定，我重新试试喔'
 			print(phrase_to_be_recorded)
 			log_write(phrase_to_be_recorded)
 			finally_tried = False
@@ -121,8 +121,8 @@ for i in range(length):
 		driver.find_element_by_xpath("/html/body/div[1]/div/div/div[3]/button").click()
 		time.sleep(10)
 		driver.find_element_by_xpath("/html/body/div[3]/div/div[3]/button[2]").click()
-		print(str(username) + "上报成功！现在是 ", now)
-		phrase_to_be_recorded = str(username) + "上报成功！现在是 " + str(now)
+		print(str(username) + "上报成功！现在是 ", datetime.now())
+		phrase_to_be_recorded = str(username) + "上报成功！现在是 " + str(datetime.now())
 		log_write(phrase_to_be_recorded)
 		time.sleep(10)
 
@@ -157,3 +157,4 @@ for i in range(length):
 
 os.system("killall -9 chromedriver")
 os.system("killall -9 python3")
+os.system("killall -9 /usr/lib/chromium-browser/chromium-browser-v7")
