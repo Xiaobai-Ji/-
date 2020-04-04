@@ -3,7 +3,10 @@
 东南大学新版疫情填报系统自动填报 </br>
 __* updated Apr.3 2020 21:00 GMT +8 *__
 
+### waiver:
 ### 警告：本script仅限学术讨论，请勿用于生产环境
+### 警告：如果使用时出现明显身体不适，请一定关闭本程序并如实申报！本script仅提供学术讨论，不承担任何连带责任
+
 ### How-to:
  - 代码第15行改成自己的绝对路径，使用前请安装selenium 和 chromedriver环境
  > !pip3 install selenium <br>
