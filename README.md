@@ -17,5 +17,3 @@ __* updated Apr.3 2020 21:00 GMT +8 *__
  > import sys <br>
  > sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver') <br>
  - 跑呗。crontab一个事件就好了，定时跑
- 
-__* 还没写完，明天再写 *__
