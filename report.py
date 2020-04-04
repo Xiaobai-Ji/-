@@ -33,7 +33,7 @@ length = len(usernames)
 now = datetime.now()
 
 def log_write(content):
-	log = open("report.log", "w")
+	log = open("report.log", "a")
 	log.write(content)
 	log.write("\n")
 	log.close
@@ -56,15 +56,15 @@ for i in range(length):
 
 	driver.get("http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/*default/index.do")
 	time.sleep(10)
-	log_write(driver.page_source)
+	print(driver.page_source)
 
 	# web mock clicking
 	driver.find_element_by_xpath("//input[@id='username']").send_keys(str(username))  # 填入你的一卡通号
 	driver.find_element_by_xpath("//input[@id='password']").send_keys(str(password))  # 填入你的密码
 	driver.find_element_by_xpath("//button[@type='submit']").click()
-	time.sleep(10)
+	time.sleep(20)
 
-	log_write(driver.page_source)
+	print(driver.page_source)
 	finally_tried = False
 
 	while (not finally_tried):
@@ -121,23 +121,27 @@ for i in range(length):
 		driver.find_element_by_xpath("/html/body/div[1]/div/div/div[3]/button").click()
 		time.sleep(10)
 		driver.find_element_by_xpath("/html/body/div[3]/div/div[3]/button[2]").click()
-		print("上报成功！现在是 ", now)
+		print(str(username) + "上报成功！现在是 ", now)
+		phrase_to_be_recorded = str(username) + "上报成功！现在是 " + str(now)
+		log_write(phrase_to_be_recorded)
 		time.sleep(10)
 
 	except selenium.common.exceptions.NoSuchElementException:
-		print(driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/button").text)
-		today = date.today()
-		now = datetime.now()
-		print("你特喵的填过啦")
+		try:
+			today = date.today()
+			now = datetime.now()
+			print(str(username) + "你特喵的填过啦")
+			log_write(str(username) + "你特喵的填过啦")
 
-	except Exception:
-		print("错误节点1，老bug，请联系admin")
+		except Exception:
+			print(str(username) + "错误节点1，老bug，请联系coder")
+			log_write(str(username) + "错误节点1，老bug，请联系coder")
 
 	try:
 		current_result = driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div[3]/div/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]").text
 
 	except selenium.common.exceptions.NoSuchElementException:
-		phrase_to_be_recorded = 'failed again at' + str(now) + 'Please report bug!'
+		phrase_to_be_recorded = 'failed again at ' + str(now) + 'Please report bug!'
 		print(phrase_to_be_recorded)
 		log_write(phrase_to_be_recorded)
 
@@ -149,3 +153,7 @@ for i in range(length):
 
 	# exit
 	driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/button").click()
+
+
+os.system("killall -9 chromedriver")
+os.system("killall -9 python3")
