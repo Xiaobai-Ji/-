@@ -4,6 +4,12 @@
 Created on Thu Apr 3 18:12:12 2020 
 @author: 1742242048hj@gmail.com
 
+Version 2 Apr 29:
+Updated to cater to new rules: reporting body temperature everyday. A random number between 35.5 and 36.5 is selected
+
+Version 1 Apr 3:
+Core reporting function done
+
 """
 #Cleaning up previous mess
 import os
@@ -17,6 +23,7 @@ from selenium import webdriver
 import selenium
 from datetime import date
 from datetime import datetime
+import math, random
 
 #存储你帐号密码的绝对路径，支持多账号，一行
 with open("/home/pi/info.txt",mode="r") as file:
@@ -124,9 +131,15 @@ for i in range(length):
 
 	try:
 		driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/button[1]").click()
-		time.sleep(10)
+		time.sleep(5)
+		body_temp = round(random.uniform(35.5,36.5), 1)
+		phrase_to_be_recorded = "今天上报的体温是： " + str(body_temp)
+		print(phrase_to_be_recorded)
+		log_write(phrase_to_be_recorded)
+		driver.find_element_by_xpath("/html/body/div[1]/div/div/div[2]/div/div[4]/div/div[2]/div[1]/div/a/div[2]/div[2]/input").send_keys(str(body_temp))
+		time.sleep(5)
 		driver.find_element_by_xpath("/html/body/div[1]/div/div/div[3]/button").click()
-		time.sleep(10)
+		time.sleep(5)
 		driver.find_element_by_xpath("/html/body/div[3]/div/div[3]/button[2]").click()
 		print(str(username) + "上报成功！现在是 ", datetime.now())
 		phrase_to_be_recorded = str(username) + "上报成功！现在是 " + str(datetime.now())
