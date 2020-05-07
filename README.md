@@ -1,7 +1,7 @@
 # 东南大学疫情填报系统的自动化填报
 
 东南大学新版疫情填报系统自动填报 </br>
-__* updated Apr.29 2020 10:34 GMT +8 *__
+__* updated May.7 2020 10:45 GMT +8 *__
 
 ### DISCLAIMER:
 ### 本script仅限学术讨论，请勿用于生产环境
@@ -17,3 +17,7 @@ __* updated Apr.29 2020 10:34 GMT +8 *__
  > import sys <br>
  > sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver') <br>
  - linux 设置crontab事件，定时跑
+
+
+### Updated V3:
+ - 减少report时的激进程度。原先的设计一旦学校系统崩溃/连接失败，会发起多线程不间断同时尝试report。
