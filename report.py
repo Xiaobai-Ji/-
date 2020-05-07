@@ -83,35 +83,42 @@ for i in range(length):
 
 	while (not finally_tried):
 		try:
+			time.sleep(10)
 			current_result = driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div[3]/div/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]").text
 
 		except selenium.common.exceptions.NoSuchElementException:
 			phrase_to_be_recorded = str(username) + 'failed 1 time, trying 2 times at ' + str(datetime.now())
 			print(phrase_to_be_recorded)
 			log_write(phrase_to_be_recorded)
+			time.sleep(10)
 
 		else:
 			phrase_to_be_recorded = str(username) + "您上次的填写日期: " + current_result
 			print(phrase_to_be_recorded)
 			log_write(phrase_to_be_recorded)
 			finally_tried = True
+			time.sleep(10)
 
 
 		try:
+			time.sleep(10)
 			current_result = driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div[3]/div/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]").text
 
 		except selenium.common.exceptions.NoSuchElementException:
 			phrase_to_be_recorded = str(username) + 'failed 2 time, trying 3 times at ' + str(datetime.now())
 			print(phrase_to_be_recorded)
 			log_write(phrase_to_be_recorded)
+			time.sleep(10)
 
 		else:
 			phrase_to_be_recorded = str(username) + "您上次的填写日期: " + current_result
 			print(phrase_to_be_recorded)
 			log_write(phrase_to_be_recorded)
 			finally_tried = True
+			time.sleep(10)
 
 		try:
+			time.sleep(10)
 			current_result = driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div[3]/div/div/div[2]/div[2]/div[1]/div[2]/div/div/div[2]").text
 
 		except selenium.common.exceptions.NoSuchElementException:
@@ -119,12 +126,14 @@ for i in range(length):
 			print(phrase_to_be_recorded)
 			log_write(phrase_to_be_recorded)
 			finally_tried = False
+			time.sleep(10)
 
 		else:
 			phrase_to_be_recorded = str(username) + "您上次的填写日期: " + current_result
 			print(phrase_to_be_recorded)
 			log_write(phrase_to_be_recorded)
 			finally_tried = True
+			time.sleep(10)
 
 
 
