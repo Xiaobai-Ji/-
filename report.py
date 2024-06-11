@@ -2,7 +2,6 @@
 """
 
 Created on Thu Apr 3 18:12:12 2020 
-@author: 1742242048hj@gmail.com
 
 Version 2 Apr 29:
 Updated to cater to new rules: reporting body temperature everyday. A random number between 35.5 and 36.5 is selected
